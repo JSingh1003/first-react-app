@@ -1,5 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
+import BlogCard from "./BlogCard";
+import { isArrayEmpty } from "./Utils";
 
 function App() {
   const blogArr = [
@@ -25,15 +27,18 @@ function App() {
     },
   ];
 
-  const blogCards = blogArr.map((item, pos) => {
-    console.log(item);
-    return (
-      <div className="BlogCard" key={item.id}>
-        <h3>{item.title}</h3>
-        <p>{item.description}</p>
-      </div>
-    );
-  });
+  const blogCards = isArrayEmpty(blogArr)
+    ? []
+    : blogArr.map((item, pos) => {
+        return (
+          <BlogCard
+            key={pos}
+            title={item.title}
+            description={item.description}
+            id={item.id}
+          />
+        );
+      });
 
   return <div className="App">{blogCards}</div>;
 }
