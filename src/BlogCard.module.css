@@ -5,6 +5,16 @@
     border-radius: 5px;
     box-shadow: 0 2px 5px #ccc;
     background-color: azure;
+
+    font-size: 16px;
+}
+.BlogCard > button{
+    font-size: 16px;
+}
+
+.LikeCount{
+    font-weight: 600;
+    font-size: 24px;
 }
 
 @media (min-width: 992px){

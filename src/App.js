@@ -2,8 +2,11 @@ import logo from "./logo.svg";
 import "./App.css";
 import BlogCard from "./BlogCard";
 import { isArrayEmpty } from "./Utils";
+import { useState } from "react";
 
 function App() {
+  const [showBlogs, setShowBlogs] = useState(true);
+
   const blogArr = [
     {
       id: 1,
@@ -40,7 +43,19 @@ function App() {
         );
       });
 
-  return <div className="App">{blogCards}</div>;
+  const onHideBtnClick = () => {
+    setShowBlogs(!showBlogs);
+  };
+
+  return (
+    <div className="App">
+      <button onClick={onHideBtnClick}>
+        {showBlogs ? "Hide List" : "Show List"}
+      </button>
+      <br></br>
+      {showBlogs ? blogCards : null}
+    </div>
+  );
 }
 
 export default App;
