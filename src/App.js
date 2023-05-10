@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+import classes from "./App.module.css";
+
+import ProductPreview from "./ProductPreview/ProductPreview";
+import ProductDetails from "./ProductDetails/ProductDetails";
+import Topbar from "./Topbar/Topbar";
+import ProductData from "./ProductData.js";
 
 function App() {
+  const [productData, setProductData] = useState(ProductData);
+  const [currentPreviewImage, setCurrentPreviewImage] = useState(
+    "https://imgur.com/iOeUBV7.png"
+  );
+  const [currentSelectedFeature, setCurrentSelectedFeature] = useState(0);
+
+  const onColorOptionClick = (item) => {
+    setCurrentPreviewImage(item);
+  };
+
+  const onFeatureClick = (pos) => {
+    setCurrentSelectedFeature(pos);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Topbar />
+      <div className={classes.MainContainer}>
+        <ProductPreview
+          currentPreviewImage={currentPreviewImage}
+          showHeartBeat={currentSelectedFeature === 1}
+        />
+        <ProductDetails
+          data={productData}
+          currentPreviewImage={currentPreviewImage}
+          onColorOptionClick={onColorOptionClick}
+          onFeatureClick={onFeatureClick}
+          showHeartBeat={currentSelectedFeature}
+        />
+      </div>
     </div>
   );
 }
