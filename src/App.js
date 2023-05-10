@@ -10,17 +10,15 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <div className="BlogCard">
         <h3>{blogObj.title}</h3>
         <p>{blogObj.description}</p>
       </div>
-      <hr></hr>
-      <div>
+      <div className="BlogCard">
         <h3>{blogObj.title}</h3>
         <p>{blogObj.description}</p>
       </div>
-      <hr></hr>
-      <div>
+      <div className="BlogCard">
         <h3>{blogObj.title}</h3>
         <p>{blogObj.description}</p>
       </div>
